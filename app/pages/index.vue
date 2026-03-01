@@ -107,18 +107,10 @@
             :duration="item.duration_days"
             :difficulty="item.difficulty"
             :is-featured="item.is_featured"
-            :image-url="getStrapiImage(item)"
-            :description="item.description"
+            :description="item.excerpt"
           />
         </div>
 
-        <div v-if="!itinerarios.length" class="fallback-grid grid-3">
-          <ItineraryCard
-            v-for="fb in fallbackItinerarios"
-            :key="fb.slug"
-            v-bind="fb"
-          />
-        </div>
       </div>
     </section>
 
@@ -176,19 +168,11 @@
             :name="beach.name || ''"
             :slug="beach.slug"
             :municipality="beach.municipality"
-            :drive-minutes="beach.drive_minutes"
-            :image-url="getStrapiImage(beach)"
+            :drive-minutes="beach.drive_time_min"
             :tags="getStrapiTags(beach)"
           />
         </div>
 
-        <div v-if="!playas.length" class="beaches-grid">
-          <BeachCard
-            v-for="fb in fallbackPlayas"
-            :key="fb.name"
-            v-bind="fb"
-          />
-        </div>
       </div>
     </section>
 
@@ -218,21 +202,13 @@
             :name="rest.name || ''"
             :slug="rest.slug"
             :cuisine-type="rest.cuisine_type"
-            :price-range="rest.price_range"
+            :price-range="rest.price_range?.trim()"
             :is-featured="rest.is_featured"
             :editorial-note="rest.editorial_note"
-            :image-url="getStrapiImage(rest)"
             :tags="getStrapiTags(rest)"
           />
         </div>
 
-        <div v-if="!restaurantes.length" class="grid-4">
-          <RestaurantCard
-            v-for="fb in fallbackRestaurants"
-            :key="fb.name"
-            v-bind="fb"
-          />
-        </div>
       </div>
     </section>
 
@@ -304,61 +280,23 @@
               role="region"
             >
               <div class="faq-answer__inner">
-                {{ faq.answer }}
+                {{ richTextToPlain(faq.answer) }}
               </div>
             </div>
           </div>
         </div>
 
-        <div v-if="!faqs.length" class="faq-list" role="list">
-          <div
-            v-for="(faq, index) in fallbackFaqs"
-            :key="index"
-            class="faq-item"
-            role="listitem"
-          >
-            <button
-              class="faq-question"
-              :aria-expanded="openFaq === index"
-              :aria-controls="`faq-fb-answer-${index}`"
-              @click="openFaq = openFaq === index ? null : index"
-            >
-              <span>{{ faq.question }}</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg v-if="openFaq !== index" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-                </svg>
-                <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                </svg>
-              </span>
-            </button>
-            <div
-              :id="`faq-fb-answer-${index}`"
-              class="faq-answer"
-              :class="{ 'faq-answer--open': openFaq === index }"
-              role="region"
-            >
-              <div class="faq-answer__inner">{{ faq.answer }}</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  fallbackItinerarios,
-  fallbackPlayas,
-  fallbackRestaurants,
-  fallbackFaqs,
-} from '~/composables/useHomeData'
+import { richTextToPlain } from '~/types/strapi'
 
 const { t, tm, locale } = useI18n()
 const localePath = useLocalePath()
-const { getStrapiImage, getStrapiTags } = useStrapiHelpers()
+const { getStrapiTags } = useStrapiHelpers()
 
 /* ── useHead ─────────────────────────────────────────── */
 useHead({
@@ -388,7 +326,7 @@ if (faqs.length) {
             name: f.question,
             acceptedAnswer: {
               '@type': 'Answer',
-              text: f.answer,
+              text: richTextToPlain(f.answer),
             },
           })),
         }),

@@ -55,7 +55,7 @@ const props = defineProps<{
   name: string
   slug?: string
   cuisineType?: string
-  priceRange?: 'low' | 'medium' | 'high'
+  priceRange?: string
   isFeatured?: boolean
   editorialNote?: string
   imageUrl?: string
