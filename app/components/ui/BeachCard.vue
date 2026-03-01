@@ -1,5 +1,9 @@
 <template>
-  <article class="beach-card">
+  <component
+    :is="slug ? NuxtLink : 'article'"
+    :to="slug ? localePath(`/playas/${slug}`) : undefined"
+    class="beach-card"
+  >
     <div class="beach-card__img-wrap">
       <img
         :src="imageUrl || '/img/placeholder-beach.webp'"
@@ -34,10 +38,12 @@
         </div>
       </div>
     </div>
-  </article>
+  </component>
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+
 defineProps<{
   name: string
   slug?: string
@@ -46,6 +52,8 @@ defineProps<{
   imageUrl?: string
   tags?: string[]
 }>()
+
+const localePath = useLocalePath()
 </script>
 
 <style scoped>

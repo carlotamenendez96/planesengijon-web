@@ -119,17 +119,17 @@ const mobileOpen = ref(false)
 onMounted(() => {
   const onScroll = () => { isScrolled.value = window.scrollY > 20 }
   window.addEventListener('scroll', onScroll, { passive: true })
-  onUnmounted(() => window.removeEventListener('scroll', onScroll))
-})
 
-// Cerrar dropdown al hacer click fuera
-onMounted(() => {
   const handleOutside = (e: MouseEvent) => {
     const target = e.target as HTMLElement
     if (!target.closest('.lang-selector')) langOpen.value = false
   }
   document.addEventListener('click', handleOutside)
-  onUnmounted(() => document.removeEventListener('click', handleOutside))
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll)
+    document.removeEventListener('click', handleOutside)
+  })
 })
 </script>
 

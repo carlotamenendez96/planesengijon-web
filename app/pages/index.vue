@@ -102,13 +102,13 @@
           <ItineraryCard
             v-for="item in itinerarios"
             :key="item.id"
-            :title="item.title || item.attributes?.title || ''"
-            :slug="item.slug || item.attributes?.slug || String(item.id)"
-            :duration="item.duration_days || item.attributes?.duration_days"
-            :difficulty="item.difficulty || item.attributes?.difficulty"
-            :is-featured="item.is_featured || item.attributes?.is_featured"
+            :title="item.title || ''"
+            :slug="item.slug || String(item.id)"
+            :duration="item.duration_days"
+            :difficulty="item.difficulty"
+            :is-featured="item.is_featured"
             :image-url="getStrapiImage(item)"
-            :description="item.description || item.attributes?.description"
+            :description="item.description"
           />
         </div>
 
@@ -173,10 +173,10 @@
           <BeachCard
             v-for="beach in playas"
             :key="beach.id"
-            :name="beach.name || beach.attributes?.name || ''"
-            :slug="beach.slug || beach.attributes?.slug"
-            :municipality="beach.municipality || beach.attributes?.municipality"
-            :drive-minutes="beach.drive_minutes || beach.attributes?.drive_minutes"
+            :name="beach.name || ''"
+            :slug="beach.slug"
+            :municipality="beach.municipality"
+            :drive-minutes="beach.drive_minutes"
             :image-url="getStrapiImage(beach)"
             :tags="getStrapiTags(beach)"
           />
@@ -215,12 +215,12 @@
           <RestaurantCard
             v-for="rest in restaurantes"
             :key="rest.id"
-            :name="rest.name || rest.attributes?.name || ''"
-            :slug="rest.slug || rest.attributes?.slug"
-            :cuisine-type="rest.cuisine_type || rest.attributes?.cuisine_type"
-            :price-range="rest.price_range || rest.attributes?.price_range"
-            :is-featured="rest.is_featured || rest.attributes?.is_featured"
-            :editorial-note="rest.editorial_note || rest.attributes?.editorial_note"
+            :name="rest.name || ''"
+            :slug="rest.slug"
+            :cuisine-type="rest.cuisine_type"
+            :price-range="rest.price_range"
+            :is-featured="rest.is_featured"
+            :editorial-note="rest.editorial_note"
             :image-url="getStrapiImage(rest)"
             :tags="getStrapiTags(rest)"
           />
@@ -287,7 +287,7 @@
               :aria-controls="`faq-answer-${index}`"
               @click="openFaq = openFaq === index ? null : index"
             >
-              <span>{{ faq.question || faq.attributes?.question }}</span>
+              <span>{{ faq.question }}</span>
               <span class="faq-icon" aria-hidden="true">
                 <svg v-if="openFaq !== index" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                   <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
@@ -304,7 +304,7 @@
               role="region"
             >
               <div class="faq-answer__inner">
-                {{ faq.answer || faq.attributes?.answer }}
+                {{ faq.answer }}
               </div>
             </div>
           </div>
@@ -349,9 +349,16 @@
 </template>
 
 <script setup lang="ts">
+import {
+  fallbackItinerarios,
+  fallbackPlayas,
+  fallbackRestaurants,
+  fallbackFaqs,
+} from '~/composables/useHomeData'
+
 const { t, tm, locale } = useI18n()
 const localePath = useLocalePath()
-const { find } = useStrapi()
+const { getStrapiImage, getStrapiTags } = useStrapiHelpers()
 
 /* ── useHead ─────────────────────────────────────────── */
 useHead({
@@ -364,78 +371,11 @@ useHead({
   ],
 })
 
-/* ── Helpers Strapi v5 ───────────────────────────────── */
-function getStrapiImage(item: any): string | undefined {
-  const img =
-    item?.cover_image?.url ||
-    item?.attributes?.cover_image?.data?.attributes?.url ||
-    item?.cover_image?.data?.attributes?.url
-  if (!img) return undefined
-  return img.startsWith('http') ? img : `${useRuntimeConfig().public.strapiUrl}${img}`
-}
-
-function getStrapiTags(item: any): string[] {
-  const tags =
-    item?.tags ||
-    item?.attributes?.tags?.data ||
-    item?.attributes?.tags
-  if (!tags) return []
-  if (Array.isArray(tags)) {
-    return tags.map((t: any) => t?.name || t?.attributes?.name || t).filter(Boolean)
-  }
-  return []
-}
-
 /* ── Datos desde Strapi (SSR) ────────────────────────── */
-let itinerarios: any[] = []
-let playas: any[] = []
-let restaurantes: any[] = []
-let faqs: any[] = []
-
-try {
-  const res = await find('itineraries', {
-    'locale': locale.value,
-    'filters[is_featured]': 'true',
-    'populate': 'cover_image',
-    'pagination[limit]': '3',
-  }) as any
-  itinerarios = res?.data ?? []
-} catch { itinerarios = [] }
-
-try {
-  const res = await find('beaches', {
-    'locale': locale.value,
-    'filters[location_type]': 'escapada',
-    'populate': 'cover_image,tags',
-    'pagination[limit]': '3',
-  }) as any
-  playas = res?.data ?? []
-} catch { playas = [] }
-
-try {
-  const res = await find('restaurants', {
-    'locale': locale.value,
-    'populate': 'cover_image,categories,tags',
-    'sort': 'is_featured:desc',
-    'pagination[limit]': '4',
-  }) as any
-  restaurantes = res?.data ?? []
-} catch { restaurantes = [] }
-
-try {
-  const res = await find('faqs', {
-    'locale': locale.value,
-    'filters[is_active]': 'true',
-    'filters[page_context][$in][0]': 'home',
-    'filters[page_context][$in][1]': 'global',
-    'sort': 'sort_order:asc',
-  }) as any
-  faqs = res?.data ?? []
-} catch { faqs = [] }
+const { itinerarios, playas, restaurantes, faqs } = await useHomeData(locale.value)
 
 /* ── Schema FAQ JSON-LD ─────────────────────────────── */
-const activeFaqs = faqs.length ? faqs : []
-if (activeFaqs.length) {
+if (faqs.length) {
   useHead({
     script: [
       {
@@ -443,12 +383,12 @@ if (activeFaqs.length) {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
-          mainEntity: activeFaqs.map((f: any) => ({
+          mainEntity: faqs.map((f) => ({
             '@type': 'Question',
-            name: f.question || f.attributes?.question,
+            name: f.question,
             acceptedAnswer: {
               '@type': 'Answer',
-              text: f.answer || f.attributes?.answer,
+              text: f.answer,
             },
           })),
         }),
@@ -523,38 +463,12 @@ const travelProfiles = [
 const activeProfile = ref<string | null>(null)
 
 // tm() devuelve el valor raw del mensaje (array, objeto o string)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const seoMustSeeList = computed((): string[] => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const list: any = tm('seo.mustSeeList')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return Array.isArray(list) ? list.map((item: any) => String(item)) : []
 })
-
-/* ── Fallbacks ───────────────────────────────────────── */
-const fallbackItinerarios = [
-  { title: 'Gijón en 3 días: lo esencial', slug: '3-dias-gijon', duration: 3, difficulty: 'easy' as const, isFeatured: true, description: 'El mejor itinerario para una primera visita a Gijón.' },
-  { title: 'Ruta gastronómica por Cimadevilla', slug: 'ruta-gastronomica', duration: 1, difficulty: 'easy' as const, description: 'Sidrerías, pinchazos y tapas en el barrio más auténtico.' },
-  { title: 'Gijón con niños: planes en familia', slug: 'gijon-familias', duration: 2, difficulty: 'easy' as const, description: 'La ciudad más divertida para los más pequeños de la casa.' },
-]
-
-const fallbackPlayas = [
-  { name: 'Playa de Rodiles', municipality: 'Villaviciosa', driveMinutes: 29, tags: ['surf', 'natural'] },
-  { name: 'Playa de Torimbia', municipality: 'Llanes', driveMinutes: 45, tags: ['nudista', 'virgen'] },
-  { name: 'Playa de Luces', municipality: 'Caravia', driveMinutes: 40, tags: ['familiar', 'tranquila'] },
-]
-
-const fallbackRestaurants = [
-  { name: 'El Molinón', cuisineType: 'Asturiana', priceRange: 'medium' as const, isFeatured: true, editorialNote: 'La mejor fabada de Gijón, sin discusión.' },
-  { name: 'Sidrería La Galana', cuisineType: 'Sidrería', priceRange: 'low' as const, editorialNote: 'Ambiente auténtico y sidra natural de primera.' },
-  { name: 'Ciudadela', cuisineType: 'Cocina de mercado', priceRange: 'high' as const, isFeatured: true, editorialNote: 'Alta cocina asturiana con producto de temporada.' },
-  { name: 'Casa Zabala', cuisineType: 'Marisquería', priceRange: 'high' as const, editorialNote: 'Marisco del Cantábrico en estado puro.' },
-]
-
-const fallbackFaqs = [
-  { question: '¿Cuál es la mejor época para visitar Gijón?', answer: 'Gijón es visitable todo el año, pero julio y agosto son los meses de playa por excelencia, con temperaturas entre 20-25°C. Si prefieres la ciudad sin multitudes, septiembre y junio son meses ideales: buen tiempo y mucha menos gente.' },
-  { question: '¿Qué ver en Gijón en 2 días?', answer: 'En 2 días puedes recorrer lo esencial: la Playa de San Lorenzo, el barrio de Cimadevilla con el puerto deportivo, el Elogio del Horizonte de Chillida, el Jardín Botánico y terminar con una cena de sidra y cachopo en alguna sidrería tradicional.' },
-  { question: '¿Cómo llegar a Gijón desde Madrid?', answer: 'La opción más cómoda es el tren AVE/Alvia desde Madrid-Chamartín, con frecuencias diarias y un trayecto de aproximadamente 4h30. También hay conexiones en autobús (Alsa) y vuelos al aeropuerto de Asturias, a 45 minutos de Gijón en coche.' },
-  { question: '¿Es Gijón una ciudad cara para el turista?', answer: 'Gijón es considerablemente más asequible que las grandes ciudades turísticas españolas. Un menú del día completo cuesta entre 12-15€, el alojamiento en hotel urbano entre 60-100€ por noche, y las sidrerías ofrecen tapas y bebida por menos de 20€ por persona.' },
-]
 </script>
 
 <style scoped>

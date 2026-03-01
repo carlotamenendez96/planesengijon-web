@@ -22,7 +22,7 @@
       </div>
 
       <NuxtLink v-if="slug" :to="localePath(`/lugares/${slug}`)" class="place-card__link">
-        Ver más
+        {{ $t('common.readMore') }}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
@@ -120,6 +120,7 @@ const localePath = useLocalePath()
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

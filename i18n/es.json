@@ -115,5 +115,8 @@
       "cookies": "Cookies",
       "contact": "Contacto"
     }
+  },
+  "common": {
+    "readMore": "Ver más"
   }
 }

@@ -91,5 +91,8 @@
       "cookies": "Cookies",
       "contact": "Kontakt"
     }
+  },
+  "common": {
+    "readMore": "Mehr lesen"
   }
 }

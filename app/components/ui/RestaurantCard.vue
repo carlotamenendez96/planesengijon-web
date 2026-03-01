@@ -1,5 +1,9 @@
 <template>
-  <article class="restaurant-card">
+  <component
+    :is="slug ? NuxtLink : 'article'"
+    :to="slug ? localePath(`/restaurantes/${slug}`) : undefined"
+    class="restaurant-card"
+  >
     <!-- Imagen -->
     <div class="restaurant-card__img-wrap">
       <img
@@ -39,10 +43,14 @@
         <TagBadge v-for="tag in tags.slice(0, 3)" :key="tag">{{ tag }}</TagBadge>
       </div>
     </div>
-  </article>
+  </component>
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+
+const localePath = useLocalePath()
+
 const props = defineProps<{
   name: string
   slug?: string
