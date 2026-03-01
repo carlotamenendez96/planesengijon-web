@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "gastronomy": "Gastronomia",
+    "beaches": "Spiagge",
+    "restaurants": "Ristoranti",
+    "places": "Luoghi",
+    "itineraries": "Itinerari",
+    "plan": "Pianifica il tuo viaggio",
+    "guides": "Guide",
+    "accommodation": "Alloggio",
+    "blog": "Blog"
+  },
+  "home": {
+    "hero_badge": "ASTURIE, PARADISO NATURALE",
+    "hero_title": "Cosa fare a Gijón: una guida per tutto l'anno (Aggiornata 2026)",
+    "hero_subtitle": "Scopri i migliori itinerari, spiagge nascoste, percorsi e ristoranti locali.",
+    "cta_itinerary": "Itinerario 3 giorni",
+    "cta_beaches": "Esplora le spiagge vicine",
+    "seasons_title": "Scegli la tua stagione ideale",
+    "seasons_subtitle": "Gijón ha attività per ogni mese dell'anno.",
+    "itineraries_title": "Itinerari consigliati",
+    "itineraries_subtitle": "Percorsi progettati dai locali per sfruttare al massimo la tua visita.",
+    "travelers_title": "Con chi viaggi?",
+    "travelers_subtitle": "Filtra le proposte in base ai tuoi compagni di viaggio.",
+    "beaches_title": "Fughe al mare vicine",
+    "beaches_subtitle": "Le migliori spiagge a meno di 2 ore da Gijón.",
+    "food_title": "Dove mangiare a Gijón",
+    "food_subtitle": "Migliori ristoranti e bar del sidro con esperienza locale.",
+    "faq_title": "Domande frequenti su un soggiorno a Gijón",
+    "see_more": "Vedi di più",
+    "see_route": "Vedi l'itinerario completo",
+    "see_map": "Vedi la mappa completa",
+    "minutes_car": "min in auto"
+  },
+  "travelers": {
+    "romantic": "Romantico",
+    "friends": "Amici",
+    "dog": "Con cane",
+    "kids": "Con bambini",
+    "rain": "Giorno di pioggia"
+  },
+  "quickLinks": {
+    "days2": "Cosa vedere a Gijón in 2 giorni",
+    "summer": "Cosa fare a Gijón in estate",
+    "beaches": "Spiagge vicino a Gijón"
+  },
+  "seasons": {
+    "summer": { "label": "Estate", "months": "Lug – Set", "description": "Spiaggia San Lorenzo, terrazze a Cimadevilla e la Semana Grande." },
+    "autumn": { "label": "Autunno", "months": "Ott – Dic", "description": "Gastronomia di stagione, mercati e la città senza folle." },
+    "winter": { "label": "Inverno", "months": "Gen – Mar", "description": "Bar del sidro, cultura e lo spettacolo del Mar Cantabrico nelle giornate di tempesta." },
+    "spring": { "label": "Primavera", "months": "Apr – Giu", "description": "Giardino botanico in fiore e la città prima dell'affollamento estivo." }
+  },
+  "itineraries": {
+    "badge": "Il più popolare",
+    "days": "giorni",
+    "difficulty": { "easy": "Facile", "medium": "Moderato", "hard": "Impegnativo" },
+    "cta": "Vedi il percorso completo"
+  },
+  "beaches": { "byCar": "in auto" },
+  "restaurants": { "featured": "Selezione 2026" },
+  "seo": {
+    "title": "Guida turistica di Gijón: tutto quello che devi sapere nel 2026",
+    "intro": "Gijón è molto più di una città di mare. È la capitale culturale e gastronomica delle Asturie.",
+    "mustSee": "Da non perdere durante la tua visita",
+    "mustSeeList": [
+      "Spiaggia San Lorenzo: la spiaggia urbana più lunga di Spagna, nel pieno centro.",
+      "Cimadevilla: il quartiere storico dei pescatori con le migliori viste sul Mar Cantabrico.",
+      "L'Elogio dell'Orizzonte di Chillida: la scultura più fotografata della città.",
+      "El Muro: il lungomare che collega tutta la fascia costiera.",
+      "Giardino Botanico: uno dei più importanti del nord della Spagna."
+    ],
+    "gastroTitle": "Gastronomia: l'arte del sidro e del buon mangiare",
+    "gastroText": "La gastronomia di Gijón ruota attorno alla sidrería: un rituale sociale in cui il sidro naturale accompagna piatti di stagione."
+  },
+  "footer": {
+    "tagline": "La tua guida di fiducia per scoprire il meglio della costa asturiana.",
+    "explore": "Esplora",
+    "guides": "Guide pratiche",
+    "legal": "Note legali",
+    "copyright": "planesengijon.com — Tutti i diritti riservati",
+    "links": {
+      "itineraries": "Itinerari",
+      "beaches": "Spiagge",
+      "restaurants": "Ristoranti",
+      "nearEscapes": "Fughe vicine",
+      "howToArrive": "Come arrivare a Gijón",
+      "whereToStay": "Dove dormire",
+      "transport": "Trasporto locale",
+      "budget": "Budget di viaggio",
+      "privacy": "Informativa sulla privacy",
+      "cookies": "Cookie",
+      "contact": "Contatti"
+    }
+  }
+}

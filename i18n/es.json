@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "gastronomy": "Gastronomía",
+    "beaches": "Playas",
+    "restaurants": "Restaurantes",
+    "places": "Lugares",
+    "itineraries": "Itinerarios",
+    "plan": "Planifica tu viaje",
+    "guides": "Guías",
+    "accommodation": "Alojamiento",
+    "blog": "Blog"
+  },
+  "home": {
+    "hero_badge": "ASTURIAS, PARAÍSO NATURAL",
+    "hero_title": "Planes en Gijón: qué hacer todo el año (Guía actualizada 2026)",
+    "hero_subtitle": "Descubre los mejores itinerarios, playas secretas, rutas y restaurantes locales.",
+    "cta_itinerary": "Ver Itinerario 3 Días",
+    "cta_beaches": "Explorar Playas Cercanas",
+    "seasons_title": "Elige tu temporada ideal",
+    "seasons_subtitle": "Gijón tiene planes para cada mes del año.",
+    "itineraries_title": "Itinerarios Destacados",
+    "itineraries_subtitle": "Rutas pensadas por locales para aprovechar al máximo tu visita.",
+    "travelers_title": "¿Con quién vienes?",
+    "travelers_subtitle": "Filtra planes según tu compañía de viaje.",
+    "beaches_title": "Escapadas de Playa Cercanas",
+    "beaches_subtitle": "Las mejores playas a menos de 2 horas de Gijón.",
+    "food_title": "Dónde comer en Gijón",
+    "food_subtitle": "Mejores restaurantes y sidrerías con criterio local.",
+    "faq_title": "Preguntas Frecuentes sobre viajar a Gijón",
+    "see_more": "Ver más",
+    "see_route": "Ver ruta completa",
+    "see_map": "Ver mapa completo",
+    "minutes_car": "min en coche"
+  },
+  "travelers": {
+    "romantic": "Romántico",
+    "friends": "Amigos",
+    "dog": "Con Perro",
+    "kids": "Con Niños",
+    "rain": "Día de Lluvia"
+  },
+  "quickLinks": {
+    "days2": "Qué ver en Gijón en 2 días",
+    "summer": "Qué hacer en Gijón en verano",
+    "beaches": "Playas cerca de Gijón"
+  },
+  "seasons": {
+    "summer": {
+      "label": "Verano",
+      "months": "Jul – Sep",
+      "description": "Playa de San Lorenzo, terrazas en Cimadevilla y la Semana Grande."
+    },
+    "autumn": {
+      "label": "Otoño",
+      "months": "Oct – Dic",
+      "description": "Gastronomía de temporada, mercados y ciudad sin aglomeraciones."
+    },
+    "winter": {
+      "label": "Invierno",
+      "months": "Ene – Mar",
+      "description": "Sidrerías, cultura y el espectáculo del Cantábrico en días de temporal."
+    },
+    "spring": {
+      "label": "Primavera",
+      "months": "Abr – Jun",
+      "description": "Jardín Botánico en flor y la ciudad antes de la masificación estival."
+    }
+  },
+  "itineraries": {
+    "badge": "Más popular",
+    "days": "días",
+    "difficulty": {
+      "easy": "Fácil",
+      "medium": "Moderado",
+      "hard": "Exigente"
+    },
+    "cta": "Ver ruta completa"
+  },
+  "beaches": {
+    "byCar": "coche"
+  },
+  "restaurants": {
+    "featured": "Selección 2026"
+  },
+  "seo": {
+    "title": "Guía de Turismo en Gijón: Todo lo que necesitas saber en 2026",
+    "intro": "Gijón es mucho más que una ciudad de playa. Es la capital cultural y gastronómica de Asturias: un destino que combina kilómetros de costa, arquitectura modernista y una escena culinaria que gira alrededor de la sidra y el pescado de temporada.",
+    "mustSee": "Imprescindibles en tu visita",
+    "mustSeeList": [
+      "Playa de San Lorenzo: la playa urbana más larga de España, en pleno centro.",
+      "Cimadevilla: el barrio histórico de pescadores con las mejores vistas al Cantábrico.",
+      "El Elogio del Horizonte de Chillida: la escultura más fotografiada de la ciudad.",
+      "El Muro: el paseo marítimo que conecta toda la franja costera.",
+      "Jardín Botánico: uno de los más importantes del norte peninsular."
+    ],
+    "gastroTitle": "Gastronomía: el arte de la sidra y el buen comer",
+    "gastroText": "La gastronomía gijonesa se articula alrededor de la sidrería: un ritual social donde el escanciado de sidra natural acompaña a platos de temporada. El cachopo, el pote asturiano y los mariscos del Cantábrico son protagonistas en cualquier mesa que se precie."
+  },
+  "footer": {
+    "tagline": "Tu guía de confianza para descubrir lo mejor de la costa asturiana.",
+    "explore": "Explora",
+    "guides": "Guías Prácticas",
+    "legal": "Legal",
+    "copyright": "planesengijon.com — Todos los derechos reservados",
+    "links": {
+      "itineraries": "Itinerarios",
+      "beaches": "Playas",
+      "restaurants": "Restaurantes",
+      "nearEscapes": "Escapadas cercanas",
+      "howToArrive": "Cómo llegar a Gijón",
+      "whereToStay": "Dónde dormir",
+      "transport": "Transporte local",
+      "budget": "Presupuesto de viaje",
+      "privacy": "Política de Privacidad",
+      "cookies": "Cookies",
+      "contact": "Contacto"
+    }
+  }
+}

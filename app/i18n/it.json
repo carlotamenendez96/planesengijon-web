@@ -1,0 +1,20 @@
+{
+  "nav": { "guides": "Guide", "beaches": "Spiagge", "gastronomy": "Gastronomia", "accommodation": "Alloggio", "blog": "Blog", "planCta": "Pianifica il tuo viaggio" },
+  "hero": { "badge": "Asturie, Paradiso Naturale", "title": "Cosa fare a Gijón tutto l'anno (Guida aggiornata 2026)", "subtitle": "Scopri i migliori itinerari, spiagge segrete e ristoranti locali.", "ctaPrimary": "Vedi itinerario 3 giorni", "ctaSecondary": "Esplora spiagge vicine" },
+  "quickLinks": { "itineraries": "Itinerari", "beaches": "Spiagge", "restaurants": "Ristoranti", "faq": "FAQ" },
+  "seasons": {
+    "title": "Scegli la tua stagione ideale",
+    "subtitle": "Gijón ha attività per ogni mese dell'anno.",
+    "summer": { "label": "Estate", "months": "Lug – Set", "description": "Spiaggia di San Lorenzo, terrazze a Cimadevilla e la Semana Grande." },
+    "autumn": { "label": "Autunno", "months": "Ott – Dic", "description": "Gastronomia di stagione, mercati e città senza folle." },
+    "winter": { "label": "Inverno", "months": "Gen – Mar", "description": "Sidrerias, cultura e lo spettacolo del Mar Cantabrico." },
+    "spring": { "label": "Primavera", "months": "Apr – Giu", "description": "Giardino Botanico in fiore prima dell'affollamento estivo." }
+  },
+  "itineraries": { "title": "Itinerari in Evidenza", "subtitle": "Percorsi pensati da locali.", "badge": "Più popolare", "days": "giorni", "difficulty": { "easy": "Facile", "medium": "Moderato", "hard": "Impegnativo" }, "cta": "Vedi percorso completo" },
+  "travelWith": { "title": "Con chi viaggi?", "subtitle": "Filtra i piani in base ai tuoi compagni.", "romantic": "Romantico", "friends": "Amici", "pet": "Con Cane", "kids": "Con Bambini", "rain": "Giorno di Pioggia" },
+  "beaches": { "title": "Gite al Mare Vicine", "subtitle": "Le migliori spiagge a meno di 2 ore da Gijón.", "moreCta": "Vedi più spiagge", "byCar": "in auto" },
+  "restaurants": { "title": "Dove mangiare a Gijón", "subtitle": "I migliori ristoranti con competenza locale.", "featured": "Selezione 2026", "moreCta": "Vedi tutti i ristoranti" },
+  "seo": { "title": "Guida Turistica di Gijón 2026", "intro": "Gijón è molto più di una città balneare.", "mustSee": "Da non perdere", "mustSeeList": ["Spiaggia di San Lorenzo", "Cimadevilla", "Scultura di Chillida", "Passeggiata El Muro", "Giardino Botanico"], "gastroTitle": "Gastronomia: l'arte del sidro e del buon cibo", "gastroText": "La gastronomia di Gijón ruota attorno alla sidrería." },
+  "faq": { "title": "Domande Frequenti su Gijón" },
+  "footer": { "tagline": "La tua guida di fiducia per la costa asturiana.", "explore": "Esplora", "guides": "Guide Pratiche", "legal": "Legale", "copyright": "planesengijon.com — Tutti i diritti riservati", "links": { "itineraries": "Itinerari", "beaches": "Spiagge", "restaurants": "Ristoranti", "nearEscapes": "Gite vicine", "howToArrive": "Come arrivare", "whereToStay": "Dove dormire", "transport": "Trasporto locale", "budget": "Budget viaggio", "privacy": "Privacy Policy", "cookies": "Cookie", "contact": "Contatto" } }
+}
