@@ -22,7 +22,7 @@
         <p class="hero__subtitle">{{ $t('home.hero_subtitle') }}</p>
 
         <div class="hero__ctas">
-          <NuxtLink :to="localePath('/itinerarios/3-dias')" class="btn btn-primary">
+          <NuxtLink :to="localePath({ name: 'itinerarios-slug', params: { slug: '3-dias' } })" class="btn btn-primary">
             {{ $t('home.cta_itinerary') }}
           </NuxtLink>
           <NuxtLink :to="localePath('/playas')" class="btn btn-outline-white">

@@ -40,7 +40,7 @@
     <!-- Body -->
     <div class="itinerary-card__body">
       <p v-if="description" class="itinerary-card__description">{{ description }}</p>
-      <NuxtLink :to="localePath(`/itinerarios/${slug}`)" class="btn btn-primary itinerary-card__cta">
+      <NuxtLink :to="localePath({ name: 'itinerarios-slug', params: { slug } })" class="btn btn-primary itinerary-card__cta">
         {{ $t('itineraries.cta') }}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7"/>

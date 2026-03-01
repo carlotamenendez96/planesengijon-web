@@ -1,7 +1,7 @@
 <template>
   <component
     :is="slug ? NuxtLink : 'article'"
-    :to="slug ? localePath(`/restaurantes/${slug}`) : undefined"
+    :to="slug ? localePath({ name: 'restaurantes-slug', params: { slug } }) : undefined"
     class="restaurant-card"
   >
     <!-- Imagen -->
