@@ -2,6 +2,16 @@
    Tipos base de la API de Strapi v5
 ───────────────────────────────────────────────────────────── */
 
+/** Campo Media (Single) de Strapi v5 — estructura plana, sin attributes anidados */
+export interface StrapiImage {
+  id?: number
+  url: string
+  width?: number
+  height?: number
+  alternativeText?: string | null
+  formats?: Record<string, { url: string; width: number; height: number }>
+}
+
 /** Nodo de texto dentro de un bloque de Rich Text (Blocks) */
 export interface StrapiRichTextChild {
   type: 'text' | string
@@ -102,6 +112,7 @@ export interface StrapiItinerary {
   budget_level?: 'low' | 'medium' | 'high' | string
   requires_car?: boolean
   is_featured: boolean
+  cover_image?: StrapiImage | null
   seo_title?: string
   seo_description?: string
   itinerary_days?: StrapiItineraryDay[]
@@ -116,6 +127,7 @@ export interface StrapiBeach {
   name: string
   description?: StrapiRichText
   excerpt?: string
+  cover_image?: StrapiImage | null
   location_type?: 'urban' | 'escapada' | string
   municipality?: string
   distance_from_gijon_km?: number
@@ -146,6 +158,7 @@ export interface StrapiRestaurant {
   name: string
   description?: StrapiRichText
   excerpt?: string
+  cover_image?: StrapiImage | null
   cuisine_type?: string
   price_range?: 'low' | 'medium' | 'high' | 'euro' | string
   address?: string
@@ -175,6 +188,7 @@ export interface StrapiPlace {
   name: string
   description?: StrapiRichText
   excerpt?: string
+  cover_image?: StrapiImage | null
   address?: string
   price_range?: string
   latitude?: number | null

@@ -1,40 +1,22 @@
+import type { StrapiTag } from '~/types/strapi'
+
 export const useStrapiHelpers = () => {
-  const config = useRuntimeConfig()
-  const strapiUrl = config.public.strapiUrl
+  const { getImageUrl } = useStrapi()
 
-  const getStrapiImage = (item: unknown): string | undefined => {
-    const i = item as Record<string, unknown>
-    const coverImage = i?.cover_image as Record<string, unknown> | undefined
-    const attributes = i?.attributes as Record<string, unknown> | undefined
-
-    const url: string | undefined =
-      coverImage?.url as string | undefined ||
-      (attributes?.cover_image as Record<string, unknown>)?.data?.attributes?.url as string | undefined ||
-      coverImage?.data?.attributes?.url as string | undefined
-
-    if (!url) return undefined
-    return url.startsWith('http') ? url : `${strapiUrl}${url}`
-  }
-
+  /**
+   * Extrae los nombres de los tags de un item de Strapi.
+   * Compatible con Strapi v5 (estructura plana).
+   */
   const getStrapiTags = (item: unknown): string[] => {
     const i = item as Record<string, unknown>
-    const attributes = i?.attributes as Record<string, unknown> | undefined
-
-    const raw: unknown =
-      i?.tags ||
-      (attributes?.tags as Record<string, unknown>)?.data ||
-      attributes?.tags
+    const raw = i?.tags
 
     if (!raw || !Array.isArray(raw)) return []
 
-    return (raw as unknown[])
-      .map((t) => {
-        if (typeof t === 'string') return t
-        const tag = t as Record<string, unknown>
-        return (tag?.name as string | undefined) || ((tag?.attributes as Record<string, unknown>)?.name as string | undefined)
-      })
+    return (raw as StrapiTag[])
+      .map((t) => t?.name)
       .filter((v): v is string => typeof v === 'string' && v.length > 0)
   }
 
-  return { getStrapiImage, getStrapiTags }
+  return { getImageUrl, getStrapiTags }
 }

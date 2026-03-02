@@ -25,6 +25,7 @@ export const useHomeData = async (locale: string) => {
     const res = await find<StrapiItinerary>('itineraries', {
       locale: sl,
       'filters[is_featured]': 'true',
+      'populate[0]': 'cover_image',
       'pagination[limit]': '3',
     })
     itinerarios = res?.data ?? []
@@ -34,7 +35,8 @@ export const useHomeData = async (locale: string) => {
     const res = await find<StrapiBeach>('beaches', {
       locale: sl,
       'filters[location_type]': 'escapada',
-      'populate[0]': 'tags',
+      'populate[0]': 'cover_image',
+      'populate[1]': 'tags',
       'pagination[limit]': '3',
     })
     playas = res?.data ?? []
@@ -43,8 +45,9 @@ export const useHomeData = async (locale: string) => {
   try {
     const res = await find<StrapiRestaurant>('restaurants', {
       locale: sl,
-      'populate[0]': 'categories',
-      'populate[1]': 'tags',
+      'populate[0]': 'cover_image',
+      'populate[1]': 'categories',
+      'populate[2]': 'tags',
       sort: 'is_featured:desc',
       'pagination[limit]': '4',
     })

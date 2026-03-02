@@ -107,6 +107,7 @@
             :duration="item.duration_days"
             :difficulty="item.difficulty"
             :is-featured="item.is_featured"
+            :image-url="getImageUrl(item.cover_image, '/img/placeholder-itinerary.webp')"
             :description="item.excerpt"
           />
         </div>
@@ -169,6 +170,7 @@
             :slug="beach.slug"
             :municipality="beach.municipality"
             :drive-minutes="beach.drive_time_min"
+            :image-url="getImageUrl(beach.cover_image, '/img/placeholder-beach.webp')"
             :tags="getStrapiTags(beach)"
           />
         </div>
@@ -205,6 +207,7 @@
             :price-range="rest.price_range?.trim()"
             :is-featured="rest.is_featured"
             :editorial-note="rest.editorial_note"
+            :image-url="getImageUrl(rest.cover_image, '/img/placeholder-restaurant.webp')"
             :tags="getStrapiTags(rest)"
           />
         </div>
@@ -296,7 +299,7 @@ import { richTextToPlain } from '~/types/strapi'
 
 const { t, tm, locale } = useI18n()
 const localePath = useLocalePath()
-const { getStrapiTags } = useStrapiHelpers()
+const { getStrapiTags, getImageUrl } = useStrapiHelpers()
 
 /* ── useHead ─────────────────────────────────────────── */
 useHead({
