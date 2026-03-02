@@ -4,3 +4,18 @@
     <p>Próximamente</p>
   </div>
 </template>
+
+<script setup lang="ts">
+const route = useRoute()
+
+useHead({
+  title: 'Lugares que ver en Gijón: monumentos, museos y rincones únicos | Planes en Gijón',
+  meta: [
+    { name: 'description', content: 'Descubre los mejores lugares de Gijón: el Cerro de Santa Catalina, el barrio de Cimadevilla, el Acuario y mucho más.' },
+    { name: 'robots', content: 'noindex, follow' },
+  ],
+  link: [
+    { rel: 'canonical', href: `https://planesengijon.com${route.path}` },
+  ],
+})
+</script>

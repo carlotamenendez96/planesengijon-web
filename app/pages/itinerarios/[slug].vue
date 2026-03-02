@@ -4,3 +4,18 @@
     <p>Próximamente</p>
   </div>
 </template>
+
+<script setup lang="ts">
+const route = useRoute()
+const slug = route.params.slug as string
+
+useHead({
+  title: `${slug} | Itinerarios por Gijón | Planes en Gijón`,
+  meta: [
+    { name: 'robots', content: 'noindex, follow' },
+  ],
+  link: [
+    { rel: 'canonical', href: `https://planesengijon.com${route.path}` },
+  ],
+})
+</script>

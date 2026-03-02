@@ -7,10 +7,11 @@
       <div class="hero__bg" aria-hidden="true">
         <img
           :src="heroImage"
-          alt="Playa de San Lorenzo, Gijón"
+          alt="Playa de San Lorenzo, Gijón — planes y qué hacer en la ciudad"
           class="hero__bg-img"
           width="1920"
           height="1080"
+          loading="eager"
           fetchpriority="high"
         />
         <div class="hero__bg-overlay"></div>
@@ -306,9 +307,49 @@ useHead({
   title: 'Planes en Gijón 2026 | Qué hacer, ver y comer — Guía local',
   meta: [
     { name: 'description', content: 'Descubre los mejores planes en Gijón para cada temporada: playas, rutas, restaurantes y escapadas cercanas. Guía actualizada y con criterio local.' },
-    { property: 'og:title', content: 'Planes en Gijón: qué hacer todo el año' },
+    { property: 'og:title', content: 'Planes en Gijón: qué hacer todo el año (Guía 2026)' },
     { property: 'og:description', content: 'Guía local actualizada 2026 con los mejores planes, restaurantes y escapadas desde Gijón.' },
     { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://planesengijon.com' },
+    { property: 'og:image', content: 'https://planesengijon.com/img/og-home.jpg' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'robots', content: 'index, follow' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://planesengijon.com' },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        'name': 'Planes en Gijón',
+        'url': 'https://planesengijon.com',
+        'description': 'Guía de planes y turismo en Gijón, Asturias',
+        'potentialAction': {
+          '@type': 'SearchAction',
+          'target': 'https://planesengijon.com/buscar?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'TouristDestination',
+        'name': 'Gijón',
+        'description': 'Ciudad costera de Asturias, España, conocida por su playa de San Lorenzo y su gastronomía asturiana.',
+        'url': 'https://planesengijon.com',
+        'touristType': ['Beach Tourism', 'Cultural Tourism', 'Gastronomy Tourism'],
+        'geo': {
+          '@type': 'GeoCoordinates',
+          'latitude': 43.5453,
+          'longitude': -5.6615,
+        },
+      }),
+    },
   ],
 })
 

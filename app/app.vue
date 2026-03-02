@@ -1,14 +1,23 @@
 <script setup lang="ts">
 const { locales } = useI18n()
-const route = useRoute()
+const switchLocalePath = useSwitchLocalePath()
 
-useHead({
-  link: locales.value.map((locale: any) => ({
-    rel: 'alternate',
-    hreflang: locale.language,
-    href: `https://planesengijon.com${locale.code === 'es' ? '' : '/' + locale.code}${route.path}`,
-  })),
-})
+// switchLocalePath() genera la URL correcta para cada locale respetando
+// rutas localizadas (ej: /playas → /en/beaches, /de/straende, etc.)
+useHead(computed(() => ({
+  link: [
+    ...locales.value.map((locale: any) => ({
+      rel: 'alternate',
+      hreflang: locale.language,
+      href: `https://planesengijon.com${switchLocalePath(locale.code)}`,
+    })),
+    {
+      rel: 'alternate',
+      hreflang: 'x-default',
+      href: `https://planesengijon.com${switchLocalePath('es')}`,
+    },
+  ],
+})))
 </script>
 
 <template>

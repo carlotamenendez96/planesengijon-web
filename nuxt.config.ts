@@ -105,7 +105,30 @@ export default defineNuxtConfig({
     url: 'https://planesengijon.com',
   },
 
-  sitemap: {},
+  sitemap: {
+    // Rutas estáticas explícitas (las dinámicas se añadirán vía sources cuando Strapi esté listo)
+    urls: [
+      '/',
+      '/gastronomia',
+      '/playas',
+      '/restaurantes',
+      '/lugares',
+      '/itinerarios',
+    ],
+    // Excluir páginas de admin y rutas con noindex
+    exclude: [
+      '/admin/**',
+    ],
+  },
 
-  robots: {},
+  robots: {
+    groups: [
+      {
+        userAgent: ['*'],
+        allow: ['/'],
+        disallow: ['/admin'],
+      },
+    ],
+    sitemap: ['https://planesengijon.com/sitemap.xml'],
+  },
 })
